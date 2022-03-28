@@ -1,2 +1,5 @@
 #Ignore enviornment file
 .env
+
+#Ignore macOS Desktop Services Store
+**/.DS_Store
