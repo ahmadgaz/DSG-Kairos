@@ -3,7 +3,7 @@ const Image = (props) => {
   var link = {
     "building community": "https://static.wixstatic.com/media/337e46_bbf5f04901ab4bbab47ad4c1cefdffb7~mv2.jpg/v1/fill/w_468,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/337e46_bbf5f04901ab4bbab47ad4c1cefdffb7~mv2.jpg",
     "financial literacy": "https://static.wixstatic.com/media/337e46_7d018d51ed4847d8b99675e78360260c~mv2.jpg/v1/fill/w_420,h_300,al_c,lg_1,q_80,enc_auto/337e46_7d018d51ed4847d8b99675e78360260c~mv2.jpg",
-    "english fluency": "https://static.wixstatic.com/media/337e46_7d018d51ed4847d8b99675e78360260c~mv2.jpg/v1/fill/w_420,h_300,al_c,lg_1,q_80,enc_auto/337e46_7d018d51ed4847d8b99675e78360260c~mv2.jpg",
+    "english fluency": "https://static.wixstatic.com/media/337e46_96b39a9e4326463b94aa2d9b8865068e~mv2.jpg/v1/fill/w_420,h_300,al_c,lg_1,q_80,enc_auto/337e46_96b39a9e4326463b94aa2d9b8865068e~mv2.jpg",
     "stem education": "https://static.wixstatic.com/media/337e46_d56cadb5e06d43d985fdd5babf525627~mv2.jpg/v1/fill/w_420,h_300,al_c,lg_1,q_80,enc_auto/337e46_d56cadb5e06d43d985fdd5babf525627~mv2.jpg",
     "nutrition and health": "https://static.wixstatic.com/media/337e46_ea2b6eeaf9ea4dc5ab18e8187ad3d326~mv2.jpg/v1/fill/w_468,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/337e46_ea2b6eeaf9ea4dc5ab18e8187ad3d326~mv2.jpg",
     "violence prevention": "https://static.wixstatic.com/media/337e46_437ff201393a4f12a9427c73408db04d~mv2.jpg/v1/fill/w_468,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/337e46_437ff201393a4f12a9427c73408db04d~mv2.jpg",
