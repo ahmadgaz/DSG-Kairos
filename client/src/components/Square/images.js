@@ -1,4 +1,3 @@
-
 const Image = (props) => {
   const { title } = props
   var link = {

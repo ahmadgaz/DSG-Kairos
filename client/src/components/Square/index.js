@@ -4,17 +4,17 @@ import Image from './images.js'
 
 const Square = (props) => {
   const { title } = props;
-  const link = "https://www.sundayfriends.org/" + title.replace(/\s+/g, '-')
+  const link = "../../pages/" + title.replace(/\s+/g, '-')
   return (
     <div class="square" tabIndex="1">
-      <a class="square-button" href={link} target="_self" tabIndex="0">
+      <div>
         <div class="image-box">
-          <Image title={title}/>
+          <Image title={title} />
         </div>
         <div class="text-label">
           <div class="title">{title.toUpperCase()}</div>
         </div>
-      </a>
+      </div>
     </div>
   );
 };

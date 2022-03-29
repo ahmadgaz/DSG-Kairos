@@ -2,11 +2,43 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import {
+  BuildingCommunity,
+  ComputerEducation,
+  EnglishFluency,
+  FinancialLiteracy,
+  GivingBack,
+  NutritionHealth,
+  Consultations,
+  PathToCollege,
+  PromotingAcademics,
+  StemEducation,
+  ViolencePrevention,
+  Writing
+} from "./pages"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route exact path="building-community" element={<BuildingCommunity />}/>
+        <Route exact path="computer-education" element={<ComputerEducation />}/>
+        <Route exact path="english-fluency" element={<EnglishFluency />}/>
+        <Route exact path="financial-literacy" element={<FinancialLiteracy />}/>
+        <Route exact path="giving-back" element={<GivingBack />}/>
+        <Route exact path="nutrition-and-health" element={<NutritionHealth />}/>
+        <Route exact path="one-on-one-consultations" element={<Consultations />}/>
+        <Route exact path="path-to-college" element={<PathToCollege />}/>
+        <Route exact path="promoting-academics" element={<PromotingAcademics />}/>
+        <Route exact path="stem-education" element={<StemEducation />}/>
+        <Route exact path="violence-prevention" element={<ViolencePrevention />}/>
+        <Route exact path="writing" element={<Writing />}/>
+      </Routes>
+    </Router>
+  </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 
