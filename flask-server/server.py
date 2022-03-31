@@ -3,6 +3,8 @@ from sympy import true
 from insightly.insightly import Insightly
 import os
 from datetime import datetime, timedelta
+import threading
+import time
 
 app = Flask(__name__)
 
@@ -57,12 +59,11 @@ def getMostActiveUsers():
         sortedFreq = sortedFreq[len(sortedFreq) - responseSize:]
     
     res = []
-    for idx in range(responseSize - 1, -1, -1):
-        user = i.read('contacts', id=sortedFreq[idx][1])[0]
-        user['FREQUENCY_OF_APPEARANCE'] = sortedFreq[idx][0]
-        res.append(user)
-    
-    # TODO: Takes 6 to 7 seconds before returning response, needs optimization
+    for user in sortedFreq:
+        res.append({
+            'CONTACT_ID': user[1],
+            'FREQUENCY_OF_APPEARANCE': user[0]
+        })
 
     return str(res)
 
