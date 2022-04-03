@@ -3,7 +3,7 @@ import DataVis from '../components/DataVis'
 export default function ComputerEducation() {
     return (
         <div>
-            <DataVis />
+            <DataVis program="Computer Education" />
         </div>
     );
 }

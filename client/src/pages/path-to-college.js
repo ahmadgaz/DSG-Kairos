@@ -3,7 +3,7 @@ import DataVis from '../components/DataVis'
 export default function PathToCollege() {
     return (
         <div>
-            <DataVis />
+            <DataVis program="Path To College" />
         </div>
     );
 }

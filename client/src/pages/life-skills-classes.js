@@ -3,7 +3,7 @@ import DataVis from '../components/DataVis'
 export default function LifeSkillsClasses() {
     return (
         <div>
-            <DataVis />
+            <DataVis program="Life Skills Classes" />
         </div>
     );
 }

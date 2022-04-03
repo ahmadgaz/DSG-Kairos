@@ -3,7 +3,7 @@ import DataVis from '../components/DataVis'
 export default function EnglishFluency() {
     return (
         <div>
-            <DataVis />
+            <DataVis program="English Fluency" />
         </div>
     );
 }

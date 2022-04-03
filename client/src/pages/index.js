@@ -4,6 +4,7 @@ import ComputerEducation from "./computer-education"
 import EnglishFluency from "./english-fluency"
 import FinancialLiteracy from "./financial-literacy"
 import GivingBack from "./giving-back"
+import Homes from "./continuing-in-the-homes"
 import LifeSkillsClasses from "./life-skills-classes"
 import NutritionHealth from "./nutrition-and-health"
 import Consultations from "./one-on-one-consultations"
@@ -21,6 +22,7 @@ export {
     EnglishFluency,
     FinancialLiteracy,
     GivingBack,
+    Homes,
     LifeSkillsClasses,
     NutritionHealth,
     Consultations,
