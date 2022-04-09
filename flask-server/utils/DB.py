@@ -1,15 +1,15 @@
-from distutils.command.clean import clean
 from time import sleep
-from turtle import update
-from flask import Flask, request
+from flask import Flask
 import pymysql, os, sys, base64, requests, json
 from dotenv import load_dotenv
-import pprint
 sys.path.append("..")
 
 load_dotenv()
 
 app = Flask(__name__)
+
+conn = ""
+encodedAPIKey = ""
 
 def parseClientsJson(clients: list):
     cleanedClients = []
@@ -37,20 +37,6 @@ def parseClientsJson(clients: list):
     return cleanedClients
 
 def populateClientsDB():
-    #connecting mySQL
-    try:
-        conn = pymysql.connect(host=os.environ.get("RDS_HOST_NAME"), 
-                            user=os.environ.get("RDS_USER"), 
-                            passwd=os.environ.get("RDS_PASSWORD"), 
-                            db=os.environ.get("DATABASE"), 
-                            connect_timeout=5)
-    except pymysql.MySQLError as e:
-        print("ERROR: Unexpected error: Could not connect to MySQL instance.")
-        print(e)
-        sys.exit(1)
-
-    # encoding the APIkey in base64 for authorization
-    encodedAPIKey = (base64.b64encode(str.encode(os.environ["INSIGHTLY_APIKEY"]))).decode()
     header = {"Authorization": "Basic " + encodedAPIKey}
 
     # collects all of the clients from insightly in clientList, a list of dictionaries
@@ -97,7 +83,6 @@ def populateClientsDB():
             cur.execute(sqlQuery, colValues,)
 
     conn.commit()
-    conn.close()
 
 
 
@@ -112,18 +97,6 @@ def parseCategoriesJSON(categories: list):
     return res
 
 def populateCategoriesDB():
-    try:
-        conn = pymysql.connect(host=os.environ.get("RDS_HOST_NAME"), 
-                            user=os.environ.get("RDS_USER"), 
-                            passwd=os.environ.get("RDS_PASSWORD"), 
-                            db=os.environ.get("DATABASE"), 
-                            connect_timeout=5)
-    except pymysql.MySQLError as e:
-        print("ERROR: Unexpected error: Could not connect to MySQL instance.")
-        print(e)
-        sys.exit(1)
-    
-    encodedAPIKey = (base64.b64encode(str.encode(os.environ["INSIGHTLY_APIKEY"]))).decode()
     header = {"Authorization": "Basic " + encodedAPIKey}
 
     skipCount = 0
@@ -164,7 +137,6 @@ def populateCategoriesDB():
             cur.execute(sqlQuery, colValues)
     
     conn.commit()
-    conn.close()
 
 
 
@@ -183,18 +155,6 @@ def parseEventsJSON(events: list):
     return res
 
 def populateEventsDB():
-    try:
-        conn = pymysql.connect(host=os.environ.get("RDS_HOST_NAME"), 
-                            user=os.environ.get("RDS_USER"), 
-                            passwd=os.environ.get("RDS_PASSWORD"), 
-                            db=os.environ.get("DATABASE"), 
-                            connect_timeout=5)
-    except pymysql.MySQLError as e:
-        print("ERROR: Unexpected error: Could not connect to MySQL instance.")
-        print(e)
-        sys.exit(1)
-    
-    encodedAPIKey = (base64.b64encode(str.encode(os.environ["INSIGHTLY_APIKEY"]))).decode()
     header = {"Authorization": "Basic " + encodedAPIKey}
 
     skipCount = 0
@@ -232,12 +192,10 @@ def populateEventsDB():
             # Filter out Events with unknown category id
             if not cur.execute("SELECT * FROM Categories WHERE id = " + str(event.get("category_id"))):
                 continue
-            print(colsString)
             sqlQuery = "INSERT INTO Events (" + colsString + ") VALUES({}) ON DUPLICATE KEY UPDATE {}".format(placeholders, update_query)
             cur.execute(sqlQuery, colValues)
 
     conn.commit()
-    conn.close()
 
 
 
@@ -258,18 +216,6 @@ def parseClientAttendanceJSON(events: list):
     return res
 
 def populateClientAttendanceDB():
-    try:
-        conn = pymysql.connect(host=os.environ.get("RDS_HOST_NAME"), 
-                            user=os.environ.get("RDS_USER"), 
-                            passwd=os.environ.get("RDS_PASSWORD"), 
-                            db=os.environ.get("DATABASE"), 
-                            connect_timeout=5)
-    except pymysql.MySQLError as e:
-        print("ERROR: Unexpected error: Could not connect to MySQL instance.")
-        print(e)
-        sys.exit(1)
-    
-    encodedAPIKey = (base64.b64encode(str.encode(os.environ["INSIGHTLY_APIKEY"]))).decode()
     header = {"Authorization": "Basic " + encodedAPIKey}
 
     skipCount = 0
@@ -312,4 +258,27 @@ def populateClientAttendanceDB():
             cur.execute(sqlQuery, colValues)
 
     conn.commit()
+
+if __name__ == "__main__":
+    # Connecting to MySQL
+    try:
+        conn = pymysql.connect(host=os.environ.get("RDS_HOST_NAME"), 
+                            user=os.environ.get("RDS_USER"), 
+                            passwd=os.environ.get("RDS_PASSWORD"), 
+                            db=os.environ.get("DATABASE"), 
+                            connect_timeout=5)
+    except pymysql.MySQLError as e:
+        print("ERROR: Unexpected error: Could not connect to MySQL instance.")
+        print(e)
+        sys.exit(1)
+    
+    # encoding the APIkey in base64 for authorization
+    encodedAPIKey = (base64.b64encode(str.encode(os.environ["INSIGHTLY_APIKEY"]))).decode()
+    
+    # TODO: Slow. Gotta make it faster later.
+    populateClientsDB()
+    populateCategoriesDB()
+    populateEventsDB()
+    populateClientAttendanceDB()
+
     conn.close()
