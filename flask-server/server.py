@@ -51,7 +51,7 @@ def getMostActiveUsers():
     # Get the date 31 days ago.
     startDate = endDate - timedelta(days=31)
 
-    clientsOrderedByFreqDesc = []
+    response = []
 
     with conn.cursor() as cur:
         columns = []
@@ -63,29 +63,28 @@ def getMostActiveUsers():
         columns.append("frequency")
 
         sqlQuery = """
-                SELECT clients.*, freq.frequency FROM sunday_friends.Clients clients
+                SELECT clients.*, freq.frequency FROM Clients clients
                 INNER JOIN (
-                    SELECT client_id, count(client_id) frequency FROM sunday_friends.Client_Attendance
+                    SELECT client_id, count(client_id) frequency FROM Client_Attendance
                     WHERE event_id in (
-                        SELECT id FROM sunday_friends.Events
+                        SELECT id FROM Events
                         WHERE date_created BETWEEN '{start}' AND '{end}'
                     )
                     GROUP BY client_id
-                ) freq ON clients.id = freq.client_id
-                ORDER BY frequency DESC
-                LIMIT {limit};
+                    ORDER BY frequency DESC
+                    LIMIT {limit}
+                ) freq ON clients.id = freq.client_id;
             """.format(start=startDate, end=endDate, limit=responseSize)
         
         cur.execute(sqlQuery)
-        result = cur.fetchall()
+        clientsWithFreq = cur.fetchall()
 
-        for client in result:
-            c = {}
+        for client in clientsWithFreq:
+            response.append({})
             for i in range(len(columns)):
-                c[columns[i]] = client[i]
-            clientsOrderedByFreqDesc.append(c)
+                response[-1][columns[i]] = client[i]
 
-    return str(clientsOrderedByFreqDesc)
+    return str(response)
 
 if __name__ == "__main__":
     try:
