@@ -9,23 +9,23 @@ const Tabbar = (props) => {
                 <div class="tab-bar-content">
                     <ul class="tab-bar-list">
                         <li class="tab-bar-item">
-                            <a class="tab-bar-link" href="www.google.com">
+                            <div class="tab-bar-link">
                                 <span id="program-title" class="tab-bar-link-text">{program}</span>
+                            </div>
+                        </li>
+                        <li class="tab-bar-item">
+                            <a class="tab-bar-link" href="www.google.com">
+                                <span class="tab-bar-link-text">Client Frequency</span>
                             </a>
                         </li>
                         <li class="tab-bar-item">
                             <a class="tab-bar-link" href="www.google.com">
-                                <span class="tab-bar-link-text">Metric 1</span>
+                                <span class="tab-bar-link-text">Most Active Users</span>
                             </a>
                         </li>
                         <li class="tab-bar-item">
                             <a class="tab-bar-link" href="www.google.com">
-                                <span class="tab-bar-link-text">Metric 2</span>
-                            </a>
-                        </li>
-                        <li class="tab-bar-item">
-                            <a class="tab-bar-link" href="www.google.com">
-                                <span class="tab-bar-link-text">Metric 3</span>
+                                <span class="tab-bar-link-text">Age Groups</span>
                             </a>
                         </li>
                     </ul>
