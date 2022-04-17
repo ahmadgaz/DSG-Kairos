@@ -1,9 +1,9 @@
 import DataVis from '../components/DataVis'
 
-export default function Homes() {
+export default function Workshop() {
     return (
         <div>
-            <DataVis program="Continuing in the Homes" />
+            <DataVis program="Workshop" />
         </div>
     );
 }

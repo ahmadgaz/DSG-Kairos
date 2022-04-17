@@ -1,4 +1,5 @@
 import "./styles.css"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
     return (
@@ -7,9 +8,9 @@ const Navbar = () => {
                 <div class="ac-gn-content">
                     <ul class="ac-gn-list">
                         <li class="ac-gn-item">
-                            <a class="ac-gn-link" href="www.google.com">
+                            <Link class="ac-gn-link" to="/">
                                 <span class="ac-gn-link-text">Sunday Friends</span>
-                            </a>
+                            </Link>
                         </li>
                         <li class="ac-gn-item">
                             <a class="ac-gn-link" href="www.google.com">

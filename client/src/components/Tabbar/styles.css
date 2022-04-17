@@ -44,6 +44,19 @@
     font-weight: bold;
 }
 
+.container {
+    width: 56px;
+    height: 40px;
+}
+
+.container img {
+    max-width: 100%;
+    /* max-width: 100%;
+    max-height: auto;
+    object-fit: contain;
+    display: inline-block; */
+}
+
 .tab-bar-item {
     box-sizing: border-box;
     display: inline-block;

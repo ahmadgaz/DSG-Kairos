@@ -1,9 +1,9 @@
 import DataVis from '../components/DataVis'
 
-export default function PathToCollege() {
+export default function HomeDelivery() {
     return (
         <div>
-            <DataVis program="Path To College" />
+            <DataVis program="Home Delivery" />
         </div>
     );
 }

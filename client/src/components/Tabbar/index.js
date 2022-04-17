@@ -1,17 +1,20 @@
 import "./styles.css"
+import Image from '../Square/images.js'
 
 const Tabbar = (props) => {
-    const {program} = props
-    
+    const { program } = props
+
     return (
         <div>
             <nav id="tab-bar">
                 <div class="tab-bar-content">
                     <ul class="tab-bar-list">
                         <li class="tab-bar-item">
-                            <a class="tab-bar-link" href="www.google.com">
-                                <span class="tab-bar-link-text">Image</span>
-                            </a>
+                            <div class="tab-bar-link">
+                                <div class="container">
+                                    <Image id="img" title={"building community"} />
+                                </div>
+                            </div>
                         </li>
                         <li class="tab-bar-item">
                             <a class="tab-bar-link" href="www.google.com">

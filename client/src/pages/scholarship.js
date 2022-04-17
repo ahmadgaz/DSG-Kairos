@@ -1,9 +1,9 @@
 import DataVis from '../components/DataVis'
 
-export default function EnglishFluency() {
+export default function Scholarship() {
     return (
         <div>
-            <DataVis program="English Fluency" />
+            <DataVis program="Scholarship" />
         </div>
     );
 }

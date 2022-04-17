@@ -1,9 +1,9 @@
 import DataVis from '../components/DataVis'
 
-export default function Writing() {
+export default function Onboarding() {
     return (
         <div>
-            <DataVis program="writing"/>
+            <DataVis program="Onboarding" />
         </div>
     );
 }

@@ -4,7 +4,6 @@ import Image from './images.js'
 
 const Square = (props) => {
   const { title } = props;
-  const link = "../../pages/" + title.replace(/\s+/g, '-')
   return (
     <div class="square" tabIndex="1">
       <div>

@@ -1,9 +1,9 @@
 import DataVis from '../components/DataVis'
 
-export default function StemEducation() {
+export default function DriveThru() {
     return (
         <div>
-            <DataVis program="STEM Education" />
+            <DataVis program="Drive Thru" />
         </div>
     );
 }

@@ -7,59 +7,32 @@ const Grid = () => {
     return (
         <div class="cont">
             <div>
-                <Link to="/building-community">
-                    <Square title="building community" />
+                <Link to="/workshop">
+                    <Square title="workshop" />
                 </Link>
-                <Link to="/nutrition-and-health">
-                    <Square title="nutrition and health" />
-                </Link>
-                <Link to="/giving-back">
-                    <Square title="giving back" />
-                </Link>
-                <Link to="/parenting-effectiveness">
-                    <Square title="parenting effectiveness" />
+                <Link to="/drive-thru">
+                    <Square title="drive thru" />
                 </Link>
             </div>
             <div>
-                <Link to="/financial-literacy">
-                    <Square title="financial literacy" />
+                <Link to="/rental-assistance">
+                    <Square title="rental assistance" />
                 </Link>
-                <Link to="/violence-prevention">
-                    <Square title="violence prevention" />
-                </Link>
-                <Link to="/promoting-academics">
-                    <Square title="promoting academics" />
-                </Link>
-                <Link to="/life-skills-classes">
-                    <Square title="life skills classes" />
+                <Link to="/onboarding">
+                    <Square title="onboarding" />
                 </Link>
             </div>
             <div>
-                <Link to="/english-fluency">
-                    <Square title="english fluency" />
+                <Link to="/scholarship">
+                    <Square title="scholarship" />
                 </Link>
-                <Link to="/one-on-one-consultations">
-                    <Square title="one-on-one consultations" />
-                </Link>
-                <Link to="/writing">
-                    <Square title="writing" />
-                </Link>
-                <Link to="/continuing-in-the-homes">
-                    <Square title="continuing in the homes" />
+                <Link to="/educational-activity">
+                    <Square title="educational activity" />
                 </Link>
             </div>
             <div>
-                <Link to="stem-education">
-                    <Square title="stem education" />
-                </Link>
-                <Link to="path-to-college">
-                    <Square title="path to college" />
-                </Link>
-                <Link to="computer-education">
-                    <Square title="computer education" />
-                </Link>
-                <Link to="community-collaborations">
-                    <Square title="community collaborations" />
+                <Link to="/home-delivery">
+                    <Square title="home delivery" />
                 </Link>
             </div>
         </div>
