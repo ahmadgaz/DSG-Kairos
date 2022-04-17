@@ -1,5 +1,4 @@
 import "./styles.css"
-import Image from '../Square/images.js'
 
 const Tabbar = (props) => {
     const { program } = props
