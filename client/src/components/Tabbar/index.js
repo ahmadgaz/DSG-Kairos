@@ -10,13 +10,6 @@ const Tabbar = (props) => {
                 <div class="tab-bar-content">
                     <ul class="tab-bar-list">
                         <li class="tab-bar-item">
-                            <div class="tab-bar-link">
-                                <div class="container">
-                                    <Image id="img" title={"building community"} />
-                                </div>
-                            </div>
-                        </li>
-                        <li class="tab-bar-item">
                             <a class="tab-bar-link" href="www.google.com">
                                 <span id="program-title" class="tab-bar-link-text">{program}</span>
                             </a>
