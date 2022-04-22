@@ -1,3 +1,4 @@
+import Programs from "./programs"
 import Workshop from "./workshop"
 import RentalAssistance from "./rental-assistance"
 import Scholarship from "./scholarship"
@@ -7,6 +8,7 @@ import Onboarding from "./onboarding"
 import EducationalActivity from "./educational-activity"
 
 export {
+    Programs,
     Workshop,
     RentalAssistance,
     Scholarship,

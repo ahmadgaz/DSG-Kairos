@@ -13,14 +13,14 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li class="ac-gn-item">
-                            <a class="ac-gn-link" href="www.google.com">
+                            <Link class="ac-gn-link" to="/">
                                 <span class="ac-gn-link-text">General</span>
-                            </a>
+                            </Link>
                         </li>
                         <li class="ac-gn-item">
-                            <a class="ac-gn-link" href="www.google.com">
+                            <Link class="ac-gn-link" to="/programs">
                                 <span class="ac-gn-link-text">Programs</span>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>

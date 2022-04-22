@@ -8,8 +8,8 @@ function Graph () {
 
     useEffect(() => {
         // setting up svg container
-        const w = 400;
-        const h = 300;
+        const w = 900;
+        const h = 275;
         const svg = d3.select(svgRef.current)
         .attr('width', w)
         .attr('height', h)

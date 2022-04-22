@@ -10,7 +10,8 @@ import {
   HomeDelivery,
   DriveThru,
   Onboarding,
-  EducationalActivity
+  EducationalActivity,
+  Programs
 } from "./pages"
 
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route exact path="programs" element={<Programs/>} />
         <Route exact path="workshop" element={<Workshop />} />
         <Route exact path="rental-assistance" element={<RentalAssistance />} />
         <Route exact path="scholarship" element={<Scholarship />} />
