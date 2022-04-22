@@ -5,19 +5,6 @@ import Navbar from './components/Navbar'
 
 function App() {
 
-  const [data, setData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/clients").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, [])
-
   return (
     <div>
       <div>
