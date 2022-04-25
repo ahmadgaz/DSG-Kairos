@@ -1,85 +1,71 @@
-#tab-bar {
-    position: absolute;
-    top: 10;
-    right: 0;
-    left: 0;
-    z-index: 9999;
-    display: block;
+.column {
+    padding: 1.5em 2.5em;
+    flex-basis: 23%;
+    max-width: 23%;
+    width: 23%;
+}
+
+.column {
+    box-sizing: border-box;
     margin: 0;
-    width: 100%;
-    min-width: 1024px;
-    height: 48px;
-    min-height: 44px;
-    font-size: 17px;
-    user-select: none;
+    min-width: 0px;
+    position: relative;
 }
 
-#tab-bar * {
-    font-size: 1em;
-    font-family: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    text-align: inherit;
-    display: flex;
-    align-items: flex-end;
+.hig-content {
+    padding-top: 0;
+    padding-bottom: 150px;
+    width: 400px;
+    /* border-left: 1px solid darkgray; */
 }
 
-.tab-bar-content {
-    padding-left: calc(max(22px, env(safe-area-inset-left)));
-    padding-right: calc(max(22px, env(safe-area-inset-right)));
+.large-9 {
+    flex-basis: 75%;
+    max-width: 75%;
+    width: 75%;
 }
 
-/* 
-.tab-bar-list {
-    
-} */
+.doc-nav {
+    width: 170px;
+}
 
-#tab-bar ul {
+nav {
+    display: block;
+}
+
+.doc-nav .side {
+    margin-bottom: 1em;
+    margin-left: -10px;
+    margin-top: -0.25em;
+}
+
+nav ul, nav ol {
+    margin: 0;
     list-style: none;
 }
 
-#program-title {
-    font-size: 30px;
-    color: black;
-    font-weight: bold;
+.doc-nav {
+    border-right: 1px solid darkgray;
 }
 
-.container {
-    width: 56px;
-    height: 40px;
-}
-
-.container img {
-    max-width: 100%;
-    /* max-width: 100%;
-    max-height: auto;
-    object-fit: contain;
-    display: inline-block; */
-}
-
-.tab-bar-item {
-    box-sizing: border-box;
+.doc-nav .side a {
     display: inline-block;
     position: relative;
-    height: 44px;
-    z-index: 1;
-    vertical-align: top;
+    padding: 0.2em 0.5em 0.2em 1.975em;
+    margin-left: -5em;
+    border-radius: 4px;
+    cursor: pointer !important;
+    color: #595959;
+    font-size: 14px;
 }
 
-.tab-bar-link {
-    color: blue;
-    float: left;
-    text-align: center;
-    padding: 14px 16px;
+#program {
+    padding: 1.5em 2em;
+    flex-basis: 30%;
+    max-width: 50%;
+    width: 50%;
 }
 
-.tab-bar-link-text {
-    position: static;
-    visibility: visible;
-    clip: auto;
-    clip-path: none;
-    width: auto;
-    height: auto;
-    top: initial;
-    overflow: visible;
+.nav-overview {
+    padding-bottom: 5px;
 }
