@@ -44,17 +44,9 @@
     margin-right: 64px;
 }
 
-/* 
-.tabby {
-    padding-top: 60px;
+#program {
+    padding: 1.5em 2em;
+    flex-basis: 30%;
+    max-width: 50%;
+    width: 50%;
 }
-
-.line {
-    margin-top: 60px;
-    padding-left: 64px;
-    padding-right: 64px;
-}
-
-.table {
-    
-} */

@@ -48,22 +48,17 @@ nav ul, nav ol {
     border-right: 1px solid darkgray;
 }
 
-.doc-nav .side a {
+.butt {
     display: inline-block;
     position: relative;
-    padding: 0.2em 0.5em 0.2em 1.975em;
+    padding: 10px;
     margin-left: -5em;
     border-radius: 4px;
     cursor: pointer !important;
     color: #595959;
     font-size: 14px;
-}
-
-#program {
-    padding: 1.5em 2em;
-    flex-basis: 30%;
-    max-width: 50%;
-    width: 50%;
+    border: none;
+    background: none;
 }
 
 .nav-overview {

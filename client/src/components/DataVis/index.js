@@ -7,6 +7,7 @@ import Table from "../Table"
 
 const DataVis = (props) => {
     const { program } = props
+
     return (
         <div>
             <div>
