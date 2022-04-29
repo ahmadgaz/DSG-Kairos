@@ -23,9 +23,10 @@ function Graph () {
             .range([0, w])
             .padding(0.5)
         const yScale = d3.scaleLinear()
-            .domain([0, h])
-            .range([h, 0 ])
+            .domain([0, 100])
+            .range([100, 0 ])
 
+        // Axis 'labels'
         const xAxis = d3.axisBottom(xScale)
             .ticks(data.length)
         const yAxis = d3.axisLeft(yScale)
@@ -37,7 +38,7 @@ function Graph () {
             .call(yAxis)
 
         svg.selectAll('.bar')
-            .data(data)
+            .data(data)                                 // Attach data
             .join('rect')
                 .attr('x', (v, i) => xScale(i))
                 .attr('y', yScale)
