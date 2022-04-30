@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import {
+  General,
   Workshop,
   RentalAssistance,
   Scholarship,
@@ -11,15 +12,15 @@ import {
   DriveThru,
   Onboarding,
   EducationalActivity,
-  Programs
+  Overview
 } from "./pages"
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route exact path="programs" element={<Programs/>} />
+        <Route exact path="/" element={<Overview />} />
+        <Route exact path="general" element={<General />} />
         <Route exact path="workshop" element={<Workshop />} />
         <Route exact path="rental-assistance" element={<RentalAssistance />} />
         <Route exact path="scholarship" element={<Scholarship />} />

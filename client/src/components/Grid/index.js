@@ -7,8 +7,8 @@ const Grid = () => {
     return (
         <div class="cont">
             <div>
-                <Link to="/overview">
-                    <Square title="overview" />
+                <Link to="/general">
+                    <Square title="general" />
                 </Link>
                 <Link to="/drive-thru">
                     <Square title="drive thru" />

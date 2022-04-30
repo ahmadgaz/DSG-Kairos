@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar'
 import Grid from '../components/Grid'
 import './styles.css'
 
-export default function programs() {
+export default function Overview() {
     return (
         <div>
             <div>
