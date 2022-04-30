@@ -1,19 +1,9 @@
-import Navbar from '../components/Navbar'
-import Grid from '../components/Grid'
-import './styles.css'
+import DataVis from '../components/DataVis'
 
 export default function Overview() {
     return (
         <div>
-            <div>
-                <Navbar />
-            </div>
-            <div>
-                <h5 class="headline">OUR PROGRAMS</h5>
-            </div>
-            <div class="grid-container">
-                <Grid />
-            </div>
+            <DataVis program="Overview" />
         </div>
-    )
+    );
 }

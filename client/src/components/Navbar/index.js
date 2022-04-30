@@ -14,7 +14,7 @@ const Navbar = () => {
                         </li>
                         <li class="ac-gn-item">
                             <Link class="ac-gn-link" to="/">
-                                <span class="ac-gn-link-text">Overview</span>
+                                <span class="ac-gn-link-text">Programs</span>
                             </Link>
                         </li>
                     </ul>
