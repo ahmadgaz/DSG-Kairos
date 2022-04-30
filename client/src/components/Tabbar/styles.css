@@ -63,7 +63,7 @@ button {
     text-align: left;
 }
 
-button:focus {
+.active {
     color: white;
     background-color: rgb(50, 173, 230) !important;
 }
