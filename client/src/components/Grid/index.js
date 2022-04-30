@@ -7,19 +7,19 @@ const Grid = () => {
     return (
         <div class="cont">
             <div>
-                <Link to="/workshop">
-                    <Square title="workshop" />
+                <Link to="/overview">
+                    <Square title="overview" />
                 </Link>
                 <Link to="/drive-thru">
                     <Square title="drive thru" />
                 </Link>
             </div>
             <div>
+                <Link to="/workshop">
+                    <Square title="workshop" />
+                </Link>
                 <Link to="/rental-assistance">
                     <Square title="rental assistance" />
-                </Link>
-                <Link to="/onboarding">
-                    <Square title="onboarding" />
                 </Link>
             </div>
             <div>
@@ -33,6 +33,9 @@ const Grid = () => {
             <div>
                 <Link to="/home-delivery">
                     <Square title="home delivery" />
+                </Link>
+                <Link to="/onboarding">
+                    <Square title="onboarding" />
                 </Link>
             </div>
         </div>
