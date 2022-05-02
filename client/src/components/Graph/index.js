@@ -1,58 +1,64 @@
 import "./styles.css";
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import * as d3 from "d3";
 
-function Graph () {
-    const [data] = useState([200, 250, 60, 150, 100, 175])
+function LineChart(props) {
+    const [data] = useState([25, 50, 130, 115, 94, 10, 82, 74, 128, 100, 111, 64]);
     const svgRef = useRef();
 
     useEffect(() => {
-        // setting up svg container
-        const w = 600;
-        const h = 100;
+        // setting up svg
+        const w = 400;
+        const h = 200;
         const svg = d3.select(svgRef.current)
-        .attr('width', w)
-        .attr('height', h)
-        .style('overflow', 'visible')
-        .style('margin-top', '0px')
-        .style("fill", "rgb(0,122,255)" )
+            .attr('wdith', w)
+            .attr('height', h)
+            .style('overflow', 'visible');
 
-        // setting the scaling
-        const xScale = d3.scaleBand()
-            .domain(data.map((val, i) => i))
-            .range([0, w])
-            .padding(0.5)
-        const yScale = d3.scaleLinear()
-            .domain([0, 100])
-            .range([100, 0 ])
+        const xScale = d3.scaleLinear()
+            .domain([0, data.length - 1])
+            .range([0, 600]);
+        const yScale = d3.scaleLinear()    
+            .domain([0, 140])
+            .range([h, 0]);
+        const generateScaledLine = d3.line()
+            .x((d, i) => xScale(i))
+            .y(yScale);
 
-        // Axis 'labels'
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        
+        // setting up the axes
         const xAxis = d3.axisBottom(xScale)
-            .ticks(data.length)
+            .tickFormat(i => months[i]);
         const yAxis = d3.axisLeft(yScale)
-            .ticks(5);
+            .ticks(5)
+        
+        console.log(d3.timeFormat())
+        
         svg.append('g')
             .call(xAxis)
             .attr('transform', `translate(0, ${h})`)
         svg.append('g')
             .call(yAxis)
 
-        svg.selectAll('.bar')
-            .data(data)                                 // Attach data
-            .join('rect')
-                .attr('x', (v, i) => xScale(i))
-                .attr('y', yScale)
-                .attr('width', xScale.bandwidth())
-                .attr('height', val =>  h - yScale(val))
+
+        // setting up the data for the svg
+        svg.selectAll('.line')
+            .data([data])
+            .join('path')
+                .attr('d', d => generateScaledLine(d))
+                .attr('fill', 'none')
+                .attr('stroke', 'steelblue');
     }, [data])
 
     return (
         <div>
-            <div id="bar-graph">
+            <div id="bar-graph"></div>
+            <div id="line-graph">
                 <svg ref={svgRef}></svg>
             </div>
         </div>
     )
 }
 
-export default Graph
+export default LineChart

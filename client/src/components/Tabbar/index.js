@@ -15,7 +15,7 @@ function Tabbar(props) {
             <nav id="doc-nav" class="doc-nav" role="navigation">
                 <ul class="side">
                     <li class="nav-overview">
-                        <button class="btn" id="client-frequency" onClick={onClick}>Client frequency at events</button>
+                        <button class="btn active" id="client-frequency" onClick={onClick}>Client frequency at events</button>
                     </li>
                     <li class="nav-overview">
                         <button class="btn" id="active-users" onClick={onClick}>Most active users</button>
