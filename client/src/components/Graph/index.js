@@ -11,7 +11,7 @@ function LineChart(props) {
         const w = 400;
         const h = 200;
         const svg = d3.select(svgRef.current)
-            .attr('wdith', w)
+            .attr('width', w)
             .attr('height', h)
             .style('overflow', 'visible');
 
