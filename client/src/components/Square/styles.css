@@ -1,0 +1,42 @@
+.square {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: 0 1 25%;
+  padding: 10px;
+  max-width: 234px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.image {
+  width: 234px;
+  height: 167px;
+  object-fit: cover;
+}
+
+.text-label {
+  background: rgb(233, 184, 85);
+  height: 52px;
+  line-height: 52px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  vertical-align: center;
+  color: rgb(95, 94, 93);
+  width: 206px;
+  padding-left: 14px;
+  padding-right: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

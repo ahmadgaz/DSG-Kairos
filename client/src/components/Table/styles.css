@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+}
+
+.column1 {
+    text-align: left;
+}
+
+.column2 {
+    text-align: right;
+}
+
+#header1, #header2 {
+    color: grey;
+}

@@ -2,11 +2,36 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import {
+  Programs,
+  Workshop,
+  RentalAssistance,
+  Scholarship,
+  HomeDelivery,
+  DriveThru,
+  Onboarding,
+  EducationalActivity,
+  Overview
+} from "./pages"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Programs />} />
+        <Route exact path="overview" element={<Overview />} />
+        <Route exact path="workshop" element={<Workshop />} />
+        <Route exact path="rental-assistance" element={<RentalAssistance />} />
+        <Route exact path="scholarship" element={<Scholarship />} />
+        <Route exact path="home-delivery" element={<HomeDelivery />} />
+        <Route exact path="drive-thru" element={<DriveThru />} />
+        <Route exact path="onboarding" element={<Onboarding />} />
+        <Route exact path="educational-activity" element={<EducationalActivity />} />
+      </Routes>
+    </Router>
+  </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 
