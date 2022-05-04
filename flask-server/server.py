@@ -3,13 +3,16 @@ from flask import Flask
 import atexit
 from datetime import datetime, timedelta
 from utils.DB import DBConnection
+from scheduler.jobs import initScheduler
 
 app = Flask(__name__)
 app.config.from_object(Config)
 db = DBConnection(app)
+appScheduler = initScheduler(app)
 
 def onExit():
     # Close the connection upon exitting the application
+    appScheduler.shutdown()
     db.close()
 
 # an example of an endpoint, prints all the clients in the db
@@ -86,5 +89,7 @@ def getMostActiveUsers():
 if __name__ == "__main__":
     # Adding onExit event handler
     atexit.register(onExit)
-    
-    app.run(debug=False)
+
+    appScheduler.start()
+
+    app.run(debug=app.config["DEBUG"])

@@ -1,27 +1,19 @@
-from time import sleep
 import pymysql, sys, requests, json
 sys.path.append("..")
 
 class DBConnection():
-    _instance = None
-    _encondedAPIkey = None
-    conn = None
-
-    def __new__(cls, app):
-        if cls._instance is None:
-            cls._instance = super(DBConnection, cls).__new__(cls)
-            cls._encodedAPIKey = app.config.get("APIKEY")
-            try:
-                cls.conn = pymysql.connect(host=app.config["HOST"][0], 
-                                    user=app.config.get("USER")[0], 
-                                    passwd=app.config.get("PASSWORD")[0], 
-                                    db=app.config.get("DATABASE")[0], 
-                                    connect_timeout=5)
-            except pymysql.MySQLError as e:
-                print("ERROR: Unexpected error: Could not connect to MySQL instance.")
-                print(e)
-                sys.exit(1)
-        return cls._instance
+    def __init__(self, app):
+        self._encodedAPIKey = app.config.get("APIKEY")
+        try:
+            self.conn = pymysql.connect(host=app.config["HOST"][0], 
+                                user=app.config.get("USER")[0], 
+                                passwd=app.config.get("PASSWORD")[0], 
+                                db=app.config.get("DATABASE")[0], 
+                                connect_timeout=5)
+        except pymysql.MySQLError as e:
+            print("ERROR: Unexpected error: Could not connect to MySQL instance.")
+            print(e)
+            sys.exit(1)
     
     def close(self):
         self.conn.close()
@@ -261,13 +253,13 @@ class DBConnection():
         response = requests.get("https://api.na1.insightly.com/v3.1/Projects", headers=header, params=params)
         data = json.loads(response.text)
         output = self._parseClientAttendanceJSON(data)
-        print(output)
+        print(len(output))
 
         with self.conn.cursor() as cur:
             sqlQuery = "SHOW COLUMNS FROM Clients;"
             cur.execute(sqlQuery)
             cols = cur.fetchall()
-            print(cols)
+            print(len(cols))
 
 
     def populateAllDB(self):
