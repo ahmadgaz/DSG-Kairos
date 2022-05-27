@@ -1,24 +1,27 @@
+from config import Config
 from flask import Flask
-import pymysql, sys
-import os
 import atexit
+from utils.DB import DBConnection
+from scheduler.jobs import initScheduler
 from dotenv import load_dotenv
-from datetime import date, datetime 
+from datetime import date, datetime, timedelta
 
 load_dotenv()
 
 app = Flask(__name__)
-
-conn = ""
+app.config.from_object(Config)
+db = DBConnection(app)
+appScheduler = initScheduler(app)
 
 def onExit():
     # Close the connection upon exitting the application
-    conn.close()
+    appScheduler.shutdown()
+    db.close()
 
 # an example of an endpoint, prints all the clients in the db
 @app.route("/exampleMethod")
 def exampleMethod():
-    with conn.cursor() as cur:
+    with db.conn.cursor() as cur:
         # stores all the column names in columns
         columns = []
         sqlQuery = "SHOW COLUMNS FROM Clients;"  # example
@@ -54,7 +57,7 @@ def getMostActiveUsers():
 
     response = []
 
-    with conn.cursor() as cur:
+    with db.conn.cursor() as cur:
         columns = []
         sqlQuery = "SHOW COLUMNS FROM Clients;"
         cur.execute(sqlQuery)
@@ -135,18 +138,9 @@ def getAgeGroups():
 
 
 if __name__ == "__main__":
-    try:
-        conn = pymysql.connect(host=os.environ.get("RDS_HOST_NAME"), 
-                            user=os.environ.get("RDS_USER"), 
-                            passwd=os.environ.get("RDS_PASSWORD"), 
-                            db=os.environ.get("DATABASE"), 
-                            connect_timeout=5)
-    except pymysql.MySQLError as e:
-        print("ERROR: Unexpected error: Could not connect to MySQL instance.")
-        print(e)
-        sys.exit(1)
-    
     # Adding onExit event handler
     atexit.register(onExit)
 
-    app.run(debug=True)
+    appScheduler.start()
+
+    app.run(debug=app.config["DEBUG"])
