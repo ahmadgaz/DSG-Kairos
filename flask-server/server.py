@@ -1,3 +1,4 @@
+from calendar import month
 from config import Config
 from flask import Flask
 import atexit
@@ -45,8 +46,9 @@ def exampleMethod():
     return str(clients)
 
   
-# Returns most active users using specifications in lines 48 to 53
-@app.route("/get-active-users")
+# TODO: Update this function to return the opposite of what getInactiveUsers() returns.
+# Returns most active users
+@app.route("/get-active-clients")
 def getMostActiveUsers():
 
     # Initialize specification variables
@@ -99,7 +101,7 @@ def calculate_age(birthdate):
     
 @app.route("/ageGroups")
 def getAgeGroups():
-    with conn.cursor() as cur: #creating a connection to the database
+    with db.conn.cursor() as cur: #creating a connection to the database
         sqlQuery = "SELECT date_of_birth FROM sunday_friends.Clients"
         cur.execute(sqlQuery)
         date_of_births = cur.fetchall()
@@ -135,6 +137,70 @@ def getAgeGroups():
             age_map["61-70"] = age_map["61-70"] + 1
             
     return age_map
+
+# isInactiveClient returns true if a client is active, otherwise false.
+def isInactiveClient(client):
+    # client structure: (id, first_name, last_name, days_registered, events_attended, days_inactive)
+
+    # default threshold (in days), used on a contition that user has not attended any events
+    threshold = 169
+
+    if client[4] == 0:
+        return client[3] >= threshold
+    
+    # threshold for inactivity is calculated by:
+    # v: max(30, days_registered) --> 30 if first month, else use days_registered
+    # min(v, 365) --> if registered for over a year, only consider past year, else consider user's days_registered
+    # divide by events_attended to calculate average time between each event attended
+    # multiply by two to increase threshold
+    threshold = (2 * min(max(30, client[3]), 365)) / client[4]
+
+    # NOTE: every client has a different threshold, calculated based on their previous event attendance
+
+    return threshold < client[5]
+        
+
+
+@app.route("/get-inactive-clients")
+def getInactiveUsers():
+
+    response = []
+    inactiveClients = []
+
+    # Only consider the events from 'startDate' to 'endDate' 
+    endDate = datetime.today()
+    startDate = endDate - timedelta(days=365)
+
+    # 1: 64.9 ms
+    # 2: 
+    with db.conn.cursor() as cur:
+        sqlQuery = """
+            SELECT c.id, first_name, last_name, DATEDIFF('{end}', date_created) days_registered, 
+            COUNT(e.id) events_attended, DATEDIFF('{end}', last_attendance) days_inactive FROM Clients c
+            LEFT JOIN (
+                SELECT * FROM Client_Attendance
+            ) ca ON id = ca.client_id
+            LEFT JOIN (
+                SELECT id, MAX(date_created) last_attendance FROM Events
+                WHERE date_created BETWEEN '{start}' AND '{end}'
+                GROUP BY id
+            ) e ON event_id = e.id
+            WHERE date_created IS NOT NULL
+            GROUP BY c.id;
+        """.format(start=startDate, end=endDate)
+
+        cur.execute(sqlQuery)
+        inactiveClients = cur.fetchall()
+    
+    for i in range(len(inactiveClients)):
+        if isInactiveClient(inactiveClients[i]):
+            response.append({
+                "id": inactiveClients[i][0],
+                "first_name": inactiveClients[i][1],
+                "last_name": inactiveClients[i][2]
+            })
+    
+    return str(response)
 
 
 if __name__ == "__main__":

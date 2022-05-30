@@ -31,6 +31,7 @@ class DBConnection():
             cleanedClients[-1]["city"] = client.get("ADDRESS_MAIL_CITY")  
             cleanedClients[-1]["state"] = client.get("ADDRESS_MAIL_STATE") 
             cleanedClients[-1]["postal_code"] = client.get("ADDRESS_MAIL_POSTCODE")
+            cleanedClients[-1]["date_created"] = client.get("DATE_CREATED_UTC")
 
             customFields = client.get("CUSTOMFIELDS")
             for ele in customFields:

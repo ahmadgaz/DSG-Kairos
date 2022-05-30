@@ -10,4 +10,5 @@ class Config(object):
     USER = os.environ.get("RDS_USER"),
     PASSWORD = os.environ.get("RDS_PASSWORD"),
     DATABASE = os.environ.get("DATABASE"),
+    USE_SCHEDULER = True,
     DEBUG = False
