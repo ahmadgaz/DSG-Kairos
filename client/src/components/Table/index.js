@@ -1,4 +1,5 @@
 import "./styles.css";
+import { useState, useEffect } from "react";
 
 const Table = () => {
     const [ageGroups, setAgeGroups] = useState([{}]);
