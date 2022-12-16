@@ -2,14 +2,27 @@ import "./styles.css";
 import { useState, useEffect } from "react";
 
 const Table = () => {
-    const [ageGroups, setAgeGroups] = useState([{}]);
+    /* Each of these contain an object of data */
+    const [ageGroups, setAgeGroups] = useState([{}]); // Amount of Clients per age group
+    const [activeUsers, setActiveUsers] = useState([{}]); // Amount of active users
+    const [inactiveUsers, setInactiveUsers] = useState([{}]); // Amount of inactive users
 
+    /* This fetches the data on mount */
     useEffect(() => {
         fetch("/ageGroups")
             .then((res) => res.json())
             .then((data) => {
                 setAgeGroups(data);
-                console.log(data);
+            });
+        fetch("/get-active-clients")
+            .then((res) => res.json())
+            .then((data) => {
+                setActiveUsers(data);
+            });
+        fetch("/get-inactive-clients")
+            .then((res) => res.json())
+            .then((data) => {
+                setInactiveUsers(data);
             });
     }, []);
 
